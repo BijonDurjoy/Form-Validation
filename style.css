@@ -1,0 +1,118 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #878a8f; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+
+#form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative; 
+}
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff; 
+}
+
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: -18px; 
+  left: 0;
+  font-size: 12px;
+  visibility: hidden; 
+}
+
+
+.username-group.error small,
+.password-group.error small,
+.cnf-password-group.error small,
+.phoneno-group.error small,
+.age-group.error small {
+  visibility: visible; 
+}
+
+.username-group.error input,
+.password-group.error input,
+.cnf-password-group.error input,
+.phoneno-group.error input,
+.age-group.error input {
+  border-color: #e74c3c; 
+}
+
+.username-group.success input,
+.password-group.success input,
+.cnf-password-group.success input,
+.phoneno-group.success input,
+.age-group.success input {
+  border-color: #2ecc71; 
+}
