@@ -1,0 +1,89 @@
+//Select all DOM elements from html
+const form = document.getElementById("form");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("cnf-password");
+const phone = document.getElementById("phoneno");
+const age = document.getElementById("age");
+
+//Helper functions to show error and success messages
+
+let showError = (input, message) => {
+  const formControl = input.parentElement;
+  formControl.className = "input-group error";
+  const small = formControl.querySelector("small");
+  small.innerText = message;
+};
+
+let showSuccess = (input) => {
+  const formControl = input.parentElement;
+  formControl.className = "input-group success";
+};
+
+//Main Event Listener for form submission
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  checkInputs();
+});
+
+//Check Inputs
+let checkInputs = () => {
+  const usernameValue = username.value.trim();
+  const passwordValue = password.value.trim();
+  const confirmPasswordValue = confirmPassword.value.trim();
+  const phoneValue = phone.value.trim();
+  const ageValue = age.value.trim();
+
+  //Username validation
+  const usernameRegex = /^[A-Za-z0-9_]+$/;
+  if (usernameValue === "") {
+    showError(username, "Username cannot be blank");
+  } else if (usernameValue.length < 3 || usernameValue.length > 15) {
+    showError(username, "Username must be between 3 and 15 characters");
+  } else if (!usernameRegex.test(usernameValue)) {
+    showError(
+      username,
+      "Username can only contain letters, numbers, and underscores"
+    );
+  } else {
+    showSuccess(username);
+  }
+
+  //Password validation
+  if (passwordValue === "") {
+    showError(password, "Password cannot be blank");
+  } else if (passwordValue < 8) {
+    showError(password, "Password must be between 8 characters");
+  } else {
+    showSuccess(password);
+  }
+
+  //Confirm Password validation
+  if (confirmPasswordValue === "") {
+    showError(confirmPassword, "Confirm Password cannot be blank");
+  } else if (confirmPasswordValue !== passwordValue) {
+    showError(confirmPassword, "Passwords do not match");
+  } else {
+    showSuccess(confirmPassword);
+  }
+
+  //Phone Number validation (optional)
+  const phoneRegex = /^[0-9]{11}$/;
+  if (phoneValue === "") {
+    showSuccess(phone);
+  } else if (!phoneRegex.test(phoneValue)) {
+    showError(phone, "Phone number must be 11 digits");
+  } else {
+    showSuccess(phone);
+  }
+
+  //Age validation
+  const ageNumber = parseInt(ageValue);
+  if (ageValue === "") {
+    showError(age, "Age cannot be blank");
+  } else if (isNaN(ageNumber) || ageNumber < 18 || ageNumber > 100) {
+    showError(age, "Age must be a number between 18 and 100");
+  } else {
+    showSuccess(age);
+  }
+};
