@@ -23,7 +23,7 @@ let showSuccess = (input) => {
 
 //Main Event Listener for form submission
 form.addEventListener("input", (e) => {
-  // e.preventDefault();
+  e.preventDefault();
   checkInputs();
 });
 
